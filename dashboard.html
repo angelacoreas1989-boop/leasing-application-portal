@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+
+  <style>
+    body { font-family: Arial; background:#f4f6f8; }
+    .card { background:white; padding:15px; margin:10px; border-radius:10px; }
+  </style>
+</head>
+
+<body>
+
+<h1>Applications Dashboard</h1>
+
+<div id="dashboard"></div>
+
+<script>
+  let applications = JSON.parse(localStorage.getItem("applications")) || [];
+
+  const dashboard = document.getElementById("dashboard");
+
+  function render() {
+    dashboard.innerHTML = "";
+
+    applications.forEach(app => {
+      dashboard.innerHTML += `
+        <div class="card">
+          <p><strong>Name:</strong> ${app.name}</p>
+          <p><strong>Status:</strong> ${app.status}</p>
+        </div>
+      `;
+    });
+  }
+
+  render();
+</script>
+
+</body>
+</html>
