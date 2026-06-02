@@ -1,4 +1,98 @@
-<br><br>
-<a href="dashboard.html">
-  <button>Go to Dashboard</button>
-</a>
+<script>
+let applications = JSON.parse(localStorage.getItem("applications")) || [];
+
+function save() {
+  localStorage.setItem("applications", JSON.stringify(applications));
+}
+
+/* LOGIN */
+function login() {
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+
+  if (user === "Angela" && pass === "WGU2028") {
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("app").style.display = "block";
+  } else {
+    alert("Invalid login");
+  }
+}
+
+function logout() {
+  document.getElementById("loginScreen").style.display = "flex";
+  document.getElementById("app").style.display = "none";
+}
+
+/* RENDER DASHBOARD */
+const form = document.getElementById("appForm");
+const list = document.getElementById("list");
+
+function render() {
+  list.innerHTML = "";
+
+  applications.forEach((app, index) => {
+    list.innerHTML += `
+      <div class="card">
+        <p><strong>Name:</strong> ${app.name}</p>
+        <p><strong>Email:</strong> ${app.email}</p>
+        <p><strong>Property:</strong> ${app.property}</p>
+        <p><strong>Income:</strong> $${app.income}</p>
+        <p><strong>Notes:</strong> ${app.notes || ""}</p>
+
+        <p><strong>Status:</strong> ${app.status}</p>
+
+        <button onclick="approve(${index})">Approve</button>
+        <button onclick="deny(${index})">Deny</button>
+        <button onclick="pending(${index})">Mark Pending</button>
+        <button onclick="removeApp(${index})" style="background:red;">Delete</button>
+      </div>
+    `;
+  });
+}
+
+/* STATUS FUNCTIONS */
+function approve(index) {
+  applications[index].status = "Approved";
+  save();
+  render();
+}
+
+function deny(index) {
+  applications[index].status = "Denied";
+  save();
+  render();
+}
+
+function pending(index) {
+  applications[index].status = "Pending";
+  save();
+  render();
+}
+
+function removeApp(index) {
+  applications.splice(index, 1);
+  save();
+  render();
+}
+
+/* FORM SUBMIT */
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const newApp = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    property: document.getElementById("property").value,
+    income: document.getElementById("income").value,
+    notes: document.getElementById("notes").value,
+    status: "Pending"
+  };
+
+  applications.push(newApp);
+  save();
+  form.reset();
+  render();
+});
+
+render();
+</script>
