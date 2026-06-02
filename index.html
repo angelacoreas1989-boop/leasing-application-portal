@@ -1,3 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Leasing Application Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+    }
+
+    header {
+      background: #2d3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* LOGIN SCREEN */
+    #loginScreen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to right, #2d3e50, #4b6584);
+    }
+
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px;
+      background: #2d3e50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    button:hover {
+      background: #1f2a38;
+    }
+
+    /* DASHBOARD */
+    #app {
+      display: none;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      margin-top: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logout {
+      width: auto;
+      background: crimson;
+      padding: 8px 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <h2>Admin Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="app">
+
+  <header>
+    <div class="topbar">
+      <h2>Leasing Application Portal</h2>
+      <button class="logout" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <h3>New Application</h3>
+
+    <form id="appForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="text" id="property" placeholder="Property" required>
+      <input type="number" id="income" placeholder="Income" required>
+      <textarea id="notes" placeholder="Notes"></textarea>
+
+      <button type="submit">Submit Application</button>
+    </form>
+
+    <h3>Applications</h3>
+    <div id="list"></div>
+
+  </div>
+</div>
+
 <script>
 let applications = JSON.parse(localStorage.getItem("applications")) || [];
 
@@ -96,3 +232,6 @@ form.addEventListener("submit", function(e) {
 
 render();
 </script>
+
+</body>
+</html>
