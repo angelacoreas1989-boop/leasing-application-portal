@@ -1,56 +1,74 @@
- Leasing Application Portal
+# 🏡 Leasing Application Portal
 
-A web-based leasing application management system built to simulate real-world property management workflows. This project was created as part of my software engineering learning journey.
+A responsive front-end web application that simulates a real-world apartment leasing application system. Users can log in, complete a rental application form, and receive validation feedback through an interactive and structured user interface.
 
- Live Demo
+This project demonstrates foundational software engineering skills in front-end development, including form handling, DOM manipulation, responsive design, and deployment using GitHub Pages.
+
+---
+
+## 🚀 Live Demo
 
 👉 https://angelacoreas1989-boop.github.io/leasing-application-portal/
 
-📌 Overview
+---
 
-The Leasing Application Portal is a front-end web application that simulates how property management teams handle rental applications. It allows users to submit applications and enables an admin-style dashboard to review and manage them.
+## 📌 Project Overview
 
-This project focuses on practical software engineering fundamentals such as UI design, state management, and CRUD operations.
+The Leasing Application Portal is designed to replicate a simplified property management workflow used in real leasing systems. It allows users to interact with a login screen and complete a structured rental application form with validation feedback.
 
-✨ Features
-Submit rental applications through a form
-View submitted applications in a dashboard
-Persistent data storage using browser localStorage
-Admin-style login simulation
-Approve, deny, or reset application status
-Delete applications from the system
-Responsive design for desktop and mobile use
-🧠 Key Concepts Practiced
-HTML structure and semantic design
-CSS styling and responsive layout
-JavaScript DOM manipulation
-Event handling and form processing
-CRUD operations (Create, Read, Update, Delete)
-Client-side data persistence (localStorage)
-Basic authentication logic (front-end simulation)
-🛠️ Technologies Used
-HTML5
-CSS3
-JavaScript (Vanilla JS)
-GitHub Pages (deployment)
-🔐 Demo Access
+This project was built to strengthen my front-end development skills and to simulate real-world business workflows using vanilla JavaScript, HTML, and CSS.
 
-This project includes a simulated admin login for demonstration purposes:
+---
 
-Username: Angela
-Password: WGU2028
-📸 Future Improvements
-Add real backend database integration
-Improve UI with modern dashboard framework
-Add search and filtering for applications
-Export applications to CSV/Excel
-Role-based authentication system
-📚 Purpose of Project
+## ✨ Features
 
-This project was built to strengthen my understanding of front-end development and simulate real-world workflows used in property management and CRM systems.
+- User login interface (front-end authentication simulation)
+- Interactive rental application form
+- Form validation and error handling
+- Responsive design for desktop and mobile devices
+- Clean UI that simulates real property management workflows
 
-👩‍💻 Author
+---
 
-Angela Coreas
-Lilburn, GA
-Software Engineering Student — Western Governors University
+## 🛠️ Tech Stack
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+- Git & GitHub
+- GitHub Pages (Deployment)
+
+---
+
+## 📸 Screenshots
+
+### Login Page
+![Login Page](assets/login.png)
+
+### Application Form
+![Application Form](assets/form.png)
+
+---
+
+## 🧠 What I Learned
+
+- DOM manipulation using JavaScript
+- Building and validating interactive forms
+- Structuring a multi-file front-end project
+- Debugging GitHub Pages deployment issues
+- Using Git and GitHub for version control
+- Improving UI/UX through iterative design
+
+---
+
+## 🚀 Future Improvements
+
+- Add backend integration for storing applications
+- Implement real authentication system (e.g., Firebase or Node.js backend)
+- Create an admin dashboard for reviewing applications
+- Improve accessibility (ARIA labels, keyboard navigation)
+- Enhance UI with animations and improved UX design
+
+---
+
+## 📂 Project Structure
