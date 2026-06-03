@@ -72,3 +72,25 @@ This project was built to strengthen my front-end development skills and to simu
 ---
 
 ## 📂 Project Structure
+leasing-application-portal/
+│
+├── index.html
+├── styles.css
+├── script.js
+├── /assets
+│ ├── login.png
+│ ├── form.png
+└── README.md
+
+---
+
+## 👩🏽‍💻 Author
+
+**Angela Coreas**  
+Aspiring Software Engineer | Property Management Professional transitioning into Tech
+
+---
+
+## 📌 Note
+
+This project reflects my journey transitioning from property management into software engineering and demonstrates my ability to build, deploy, and iterate on functional web applications.
