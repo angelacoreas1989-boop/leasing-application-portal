@@ -72,15 +72,14 @@ This project was built to strengthen my front-end development skills and to simu
 ---
 
 ## 📂 Project Structure
-leasing-application-portal/
-│
-├── index.html
-├── styles.css
-├── script.js
-├── /assets
-│ ├── login.png
-│ ├── form.png
-└── README.md
+
+- index.html
+- styles.css
+- script.js
+- assets/
+  - login.png
+  - form.png
+- README.md
 
 ---
 
