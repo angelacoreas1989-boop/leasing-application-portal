@@ -519,7 +519,6 @@
       }
 
       const applicant = selectedApplicant;
-
       if (applicant.income >= 60000 && applicant.credit >= 650) {
         reviewResult.textContent = `${applicant.displayName}'s application for ${applicant.property} is Approved. Income and credit meet current review criteria.`;
         reviewResult.style.color = "var(--green)";
@@ -531,9 +530,10 @@
         reviewResult.style.color = "var(--red)";
       }
     }
+
+    function logout() {
+      window.location.href = "index.html";
+    }
   </script>
-  function logout() {
-  window.location.href = "index.html";
-}
 </body>
 </html>
