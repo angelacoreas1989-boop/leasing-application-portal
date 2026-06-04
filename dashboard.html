@@ -340,15 +340,8 @@
 
       <div class="form-grid">
         <div>
-          <label for="applicantSelect">Applicant Name</label>
-          <select id="applicantSelect">
-            <option value="">Select applicant</option>
-            <option value="Sarah Johnson">Sarah Johnson</option>
-            <option value="Michael Lee">Michael Lee</option>
-            <option value="Emily Davis">Emily Davis</option>
-            <option value="Carlos Rivera">Carlos Rivera</option>
-            <option value="Jasmine Brooks">Jasmine Brooks</option>
-          </select>
+          <label for="applicantSearch">Applicant First and Last Name</label>
+          <input type="text" id="applicantSearch" placeholder="Example: Sarah Johnson" />
         </div>
 
         <div>
@@ -367,6 +360,7 @@
         </div>
       </div>
 
+      <button onclick="loadApplicant()">Load Applicant</button>
       <button onclick="reviewApplication()">Review Application</button>
 
       <p id="reviewResult" class="result"></p>
@@ -379,38 +373,46 @@
 
   <script>
     const applicants = {
-      "Sarah Johnson": {
+      "sarah johnson": {
+        displayName: "Sarah Johnson",
         property: "Oak Ridge Apartments",
         income: 72000,
         credit: 720
       },
-      "Michael Lee": {
+      "michael lee": {
+        displayName: "Michael Lee",
         property: "Park View Residences",
         income: 58500,
         credit: 625
       },
-      "Emily Davis": {
+      "emily davis": {
+        displayName: "Emily Davis",
         property: "Lakeside Villas",
         income: 34000,
         credit: 560
       },
-      "Carlos Rivera": {
+      "carlos rivera": {
+        displayName: "Carlos Rivera",
         property: "Oak Ridge Apartments",
         income: 81000,
         credit: 735
       },
-      "Jasmine Brooks": {
+      "jasmine brooks": {
+        displayName: "Jasmine Brooks",
         property: "Cityline Flats",
         income: 62000,
         credit: 610
       }
     };
 
+    let selectedApplicant = null;
+
     const searchInput = document.getElementById("searchInput");
     const statusFilter = document.getElementById("statusFilter");
     const rows = document.querySelectorAll("#applicantTable tr");
     const filterCards = document.querySelectorAll(".filter-card");
-    const applicantSelect = document.getElementById("applicantSelect");
+
+    const applicantSearch = document.getElementById("applicantSearch");
     const propertyInput = document.getElementById("property");
     const incomeInput = document.getElementById("income");
     const creditInput = document.getElementById("credit");
@@ -451,43 +453,45 @@
       });
     });
 
-    applicantSelect.addEventListener("change", () => {
-      const selectedApplicant = applicantSelect.value;
-      const applicant = applicants[selectedApplicant];
+    function loadApplicant() {
+      const enteredName = applicantSearch.value.trim().toLowerCase();
+      const applicant = applicants[enteredName];
 
       if (!applicant) {
+        selectedApplicant = null;
         propertyInput.value = "";
         incomeInput.value = "";
         creditInput.value = "";
-        reviewResult.textContent = "";
-        return;
-      }
-
-      propertyInput.value = applicant.property;
-      incomeInput.value = `$${applicant.income.toLocaleString()}`;
-      creditInput.value = applicant.credit;
-      reviewResult.textContent = "Applicant record loaded. Ready for review.";
-      reviewResult.style.color = "var(--dark-pink)";
-    });
-
-    function reviewApplication() {
-      const selectedApplicant = applicantSelect.value;
-      const applicant = applicants[selectedApplicant];
-
-      if (!applicant) {
-        reviewResult.textContent = "Please select an applicant before reviewing the application.";
+        reviewResult.textContent = "Applicant not found. Please enter a valid first and last name from the applicant pipeline.";
         reviewResult.style.color = "var(--red)";
         return;
       }
 
+      selectedApplicant = applicant;
+      propertyInput.value = applicant.property;
+      incomeInput.value = `$${applicant.income.toLocaleString()}`;
+      creditInput.value = applicant.credit;
+      reviewResult.textContent = `${applicant.displayName}'s record loaded. Ready for application review.`;
+      reviewResult.style.color = "var(--dark-pink)";
+    }
+
+    function reviewApplication() {
+      if (!selectedApplicant) {
+        reviewResult.textContent = "Please load an applicant record before reviewing the application.";
+        reviewResult.style.color = "var(--red)";
+        return;
+      }
+
+      const applicant = selectedApplicant;
+
       if (applicant.income >= 60000 && applicant.credit >= 650) {
-        reviewResult.textContent = `${selectedApplicant}'s application for ${applicant.property} is Approved. Income and credit meet current review criteria.`;
+        reviewResult.textContent = `${applicant.displayName}'s application for ${applicant.property} is Approved. Income and credit meet current review criteria.`;
         reviewResult.style.color = "var(--green)";
       } else if (applicant.income >= 45000 && applicant.credit >= 600) {
-        reviewResult.textContent = `${selectedApplicant}'s application for ${applicant.property} is Pending additional review. Income or credit is close to approval criteria.`;
+        reviewResult.textContent = `${applicant.displayName}'s application for ${applicant.property} is Pending additional review. Income or credit is close to approval criteria.`;
         reviewResult.style.color = "var(--yellow)";
       } else {
-        reviewResult.textContent = `${selectedApplicant}'s application for ${applicant.property} is Denied based on current income and credit criteria.`;
+        reviewResult.textContent = `${applicant.displayName}'s application for ${applicant.property} is Denied based on current income and credit criteria.`;
         reviewResult.style.color = "var(--red)";
       }
     }
