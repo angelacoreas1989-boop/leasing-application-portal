@@ -22,11 +22,11 @@ Transforming real-world leasing operations into a functional web application.
 
 ## ✦ PROJECT OVERVIEW ✦
 
-The Leasing Application Portal is a responsive front-end web application that simulates a rental application workflow used in property management operations.
+The Leasing Application Portal is a responsive front-end web application that simulates a real-world leasing workflow used in property management operations.
 
-Inspired by my professional experience in leasing, CRM systems, application processing, pipeline management, and workflow coordination, this project demonstrates how real-world business processes can be translated into software solutions using HTML, CSS, JavaScript, Git, and GitHub Pages.
+Inspired by my professional experience in leasing, CRM systems, application processing, pipeline management, and workflow coordination, this project demonstrates how business processes can be translated into software solutions using HTML, CSS, JavaScript, Git, and GitHub Pages.
 
-Users can securely access a simulated leasing dashboard, review applicant information, search application records, filter workflow statuses, and process application decisions through an interactive interface.
+Users can log in, review applicant records, search application data, filter workflow statuses, load applicant profiles, and process leasing decisions through an interactive dashboard experience.
 
 ---
 
@@ -44,15 +44,23 @@ This project simulates a simplified version of that workflow by providing a stru
 
 ✦ Leasing operations dashboard
 
-✦ Application review workflow
+✦ Interactive applicant pipeline
 
 ✦ Applicant search functionality
 
-✦ Status filtering (Approved, Pending, Denied)
+✦ Status filtering through dashboard metrics
 
-✦ Interactive application decision simulator
+✦ Clickable Approved, Pending, and Denied workflow cards
 
-✦ Dashboard metrics and workflow tracking
+✦ Applicant record lookup by name
+
+✦ Automatic applicant data retrieval
+
+✦ Application review simulator
+
+✦ Approval, Pending Review, and Denial decision logic
+
+✦ Sign Out workflow
 
 ✦ Responsive design for desktop and mobile devices
 
@@ -74,17 +82,19 @@ This project simulates a simplified version of that workflow by providing a stru
 
 ✦ DOM Manipulation
 
-✦ Form Validation
+✦ JavaScript Objects & Data Structures
+
+✦ Event Handling
+
+✦ Search & Filtering Logic
 
 ✦ Workflow Design
 
-✦ Responsive Design
+✦ Business Process Analysis
 
 ✦ User Interface Development
 
-✦ Business Process Analysis
-
-✦ Search & Filtering Functionality
+✦ Responsive Design
 
 ✦ Git Version Control
 
@@ -98,9 +108,9 @@ This project simulates a simplified version of that workflow by providing a stru
 
 ![Login Screen](assets/login-screen.png)
 
-### ✦ Application Dashboard ✦
+### ✦ Leasing Operations Dashboard ✦
 
-![Application Dashboard](assets/dashboard.png)
+![Dashboard](assets/dashboard.png)
 
 ---
 
@@ -114,6 +124,8 @@ This project simulates a simplified version of that workflow by providing a stru
 
 ✦ Implementing search, filtering, and decision logic
 
+✦ Using JavaScript objects to simulate applicant records
+
 ✦ Improving user experience through responsive design
 
 ✦ Deploying and maintaining applications using GitHub Pages
@@ -126,21 +138,21 @@ This project simulates a simplified version of that workflow by providing a stru
 
 ## ✦ FUTURE ENHANCEMENTS ✦
 
-✦ Applicant status tracking history
-
-✦ Admin review dashboard
-
-✦ Document upload functionality
-
 ✦ Backend database integration
 
-✦ Authentication and role-based access
+✦ Real authentication system
+
+✦ Applicant document uploads
+
+✦ Administrative review dashboard
 
 ✦ Applicant notes and review comments
 
-✦ Analytics dashboard for leasing metrics
+✦ Workflow analytics and reporting
 
-✦ API integration for property and applicant data
+✦ Property inventory management
+
+✦ API integration for applicant data
 
 ---
 
