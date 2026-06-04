@@ -7,6 +7,20 @@
   <title>Leasing Operations Dashboard</title>
 
   <style>
+    .filter-card {
+  cursor: pointer;
+}
+
+.filter-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--pink);
+  box-shadow: 0 12px 30px rgba(255, 105, 180, 0.18);
+}
+
+.filter-card.active {
+  border-color: var(--pink);
+  background: var(--soft-pink);
+}
     :root {
       --pink: #ff69b4;
       --dark-pink: #e75480;
@@ -346,49 +360,66 @@
     ✦ Built by Angela Coreas • Workflow Design • Front-End Development ✦
   </footer>
 
-  <script>
-    const searchInput = document.getElementById("searchInput");
-    const statusFilter = document.getElementById("statusFilter");
-    const rows = document.querySelectorAll("#applicantTable tr");
+<script>
+  const searchInput = document.getElementById("searchInput");
+  const statusFilter = document.getElementById("statusFilter");
+  const rows = document.querySelectorAll("#applicantTable tr");
+  const filterCards = document.querySelectorAll(".filter-card");
 
-    function filterApplicants() {
-      const searchValue = searchInput.value.toLowerCase();
-      const statusValue = statusFilter.value;
+  function filterApplicants() {
+    const searchValue = searchInput.value.toLowerCase();
+    const statusValue = statusFilter.value;
 
-      rows.forEach(row => {
-        const name = row.children[0].textContent.toLowerCase();
-        const status = row.dataset.status;
+    rows.forEach(row => {
+      const name = row.children[0].textContent.toLowerCase();
+      const status = row.dataset.status;
 
-        const matchesName = name.includes(searchValue);
-        const matchesStatus = statusValue === "all" || status === statusValue;
+      const matchesName = name.includes(searchValue);
+      const matchesStatus = statusValue === "all" || status === statusValue;
 
-        row.style.display = matchesName && matchesStatus ? "" : "none";
-      });
+      row.style.display = matchesName && matchesStatus ? "" : "none";
+    });
+  }
+
+  searchInput.addEventListener("input", filterApplicants);
+  statusFilter.addEventListener("change", () => {
+    filterCards.forEach(card => card.classList.remove("active"));
+    filterApplicants();
+  });
+
+  filterCards.forEach(card => {
+    card.addEventListener("click", () => {
+      const selectedStatus = card.dataset.filter;
+
+      statusFilter.value = selectedStatus;
+
+      filterCards.forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+
+      filterApplicants();
+    });
+  });
+
+  function reviewApplication() {
+    const name = document.getElementById("applicantName").value.trim();
+    const property = document.getElementById("property").value;
+    const income = Number(document.getElementById("income").value);
+    const credit = Number(document.getElementById("credit").value);
+    const result = document.getElementById("reviewResult");
+
+    if (!name || !property || !income || !credit) {
+      result.textContent = "Please complete all fields before reviewing the application.";
+      return;
     }
 
-    searchInput.addEventListener("input", filterApplicants);
-    statusFilter.addEventListener("change", filterApplicants);
-
-    function reviewApplication() {
-      const name = document.getElementById("applicantName").value.trim();
-      const property = document.getElementById("property").value;
-      const income = Number(document.getElementById("income").value);
-      const credit = Number(document.getElementById("credit").value);
-      const result = document.getElementById("reviewResult");
-
-      if (!name || !property || !income || !credit) {
-        result.textContent = "Please complete all fields before reviewing the application.";
-        return;
-      }
-
-      if (income >= 60000 && credit >= 650) {
-        result.textContent = `${name}'s application for ${property} is Approved.`;
-      } else if (income >= 45000 && credit >= 600) {
-        result.textContent = `${name}'s application for ${property} is Pending additional review.`;
-      } else {
-        result.textContent = `${name}'s application for ${property} is Denied based on current criteria.`;
-      }
+    if (income >= 60000 && credit >= 650) {
+      result.textContent = `${name}'s application for ${property} is Approved.`;
+    } else if (income >= 45000 && credit >= 600) {
+      result.textContent = `${name}'s application for ${property} is Pending additional review.`;
+    } else {
+      result.textContent = `${name}'s application for ${property} is Denied based on current criteria.`;
     }
-  </script>
+  }
+</script>
 </body>
 </html>
