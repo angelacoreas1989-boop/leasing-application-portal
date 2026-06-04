@@ -189,6 +189,11 @@
       margin-top: 6px;
     }
 
+    input[readonly] {
+      background: #f9fafb;
+      color: var(--muted);
+    }
+
     button {
       margin-top: 20px;
       padding: 13px 24px;
@@ -210,6 +215,7 @@
       margin-top: 18px;
       font-weight: bold;
       color: var(--dark-pink);
+      line-height: 1.6;
     }
 
     footer {
@@ -334,29 +340,30 @@
 
       <div class="form-grid">
         <div>
-          <label for="applicantName">Applicant Name</label>
-          <input type="text" id="applicantName" placeholder="Enter applicant name" />
-        </div>
-
-        <div>
-          <label for="property">Property</label>
-          <select id="property">
-            <option value="">Select property</option>
-            <option>Oak Ridge Apartments</option>
-            <option>Park View Residences</option>
-            <option>Lakeside Villas</option>
-            <option>Cityline Flats</option>
+          <label for="applicantSelect">Applicant Name</label>
+          <select id="applicantSelect">
+            <option value="">Select applicant</option>
+            <option value="Sarah Johnson">Sarah Johnson</option>
+            <option value="Michael Lee">Michael Lee</option>
+            <option value="Emily Davis">Emily Davis</option>
+            <option value="Carlos Rivera">Carlos Rivera</option>
+            <option value="Jasmine Brooks">Jasmine Brooks</option>
           </select>
         </div>
 
         <div>
+          <label for="property">Property</label>
+          <input type="text" id="property" readonly placeholder="Auto-filled property" />
+        </div>
+
+        <div>
           <label for="income">Annual Income</label>
-          <input type="number" id="income" placeholder="Example: 65000" />
+          <input type="text" id="income" readonly placeholder="Auto-filled income" />
         </div>
 
         <div>
           <label for="credit">Credit Score</label>
-          <input type="number" id="credit" placeholder="Example: 680" />
+          <input type="text" id="credit" readonly placeholder="Auto-filled credit score" />
         </div>
       </div>
 
@@ -371,10 +378,43 @@
   </footer>
 
   <script>
+    const applicants = {
+      "Sarah Johnson": {
+        property: "Oak Ridge Apartments",
+        income: 72000,
+        credit: 720
+      },
+      "Michael Lee": {
+        property: "Park View Residences",
+        income: 58500,
+        credit: 625
+      },
+      "Emily Davis": {
+        property: "Lakeside Villas",
+        income: 34000,
+        credit: 560
+      },
+      "Carlos Rivera": {
+        property: "Oak Ridge Apartments",
+        income: 81000,
+        credit: 735
+      },
+      "Jasmine Brooks": {
+        property: "Cityline Flats",
+        income: 62000,
+        credit: 610
+      }
+    };
+
     const searchInput = document.getElementById("searchInput");
     const statusFilter = document.getElementById("statusFilter");
     const rows = document.querySelectorAll("#applicantTable tr");
     const filterCards = document.querySelectorAll(".filter-card");
+    const applicantSelect = document.getElementById("applicantSelect");
+    const propertyInput = document.getElementById("property");
+    const incomeInput = document.getElementById("income");
+    const creditInput = document.getElementById("credit");
+    const reviewResult = document.getElementById("reviewResult");
 
     function filterApplicants() {
       const searchValue = searchInput.value.toLowerCase();
@@ -411,24 +451,44 @@
       });
     });
 
-    function reviewApplication() {
-      const name = document.getElementById("applicantName").value.trim();
-      const property = document.getElementById("property").value;
-      const income = Number(document.getElementById("income").value);
-      const credit = Number(document.getElementById("credit").value);
-      const result = document.getElementById("reviewResult");
+    applicantSelect.addEventListener("change", () => {
+      const selectedApplicant = applicantSelect.value;
+      const applicant = applicants[selectedApplicant];
 
-      if (!name || !property || !income || !credit) {
-        result.textContent = "Please complete all fields before reviewing the application.";
+      if (!applicant) {
+        propertyInput.value = "";
+        incomeInput.value = "";
+        creditInput.value = "";
+        reviewResult.textContent = "";
         return;
       }
 
-      if (income >= 60000 && credit >= 650) {
-        result.textContent = `${name}'s application for ${property} is Approved.`;
-      } else if (income >= 45000 && credit >= 600) {
-        result.textContent = `${name}'s application for ${property} is Pending additional review.`;
+      propertyInput.value = applicant.property;
+      incomeInput.value = `$${applicant.income.toLocaleString()}`;
+      creditInput.value = applicant.credit;
+      reviewResult.textContent = "Applicant record loaded. Ready for review.";
+      reviewResult.style.color = "var(--dark-pink)";
+    });
+
+    function reviewApplication() {
+      const selectedApplicant = applicantSelect.value;
+      const applicant = applicants[selectedApplicant];
+
+      if (!applicant) {
+        reviewResult.textContent = "Please select an applicant before reviewing the application.";
+        reviewResult.style.color = "var(--red)";
+        return;
+      }
+
+      if (applicant.income >= 60000 && applicant.credit >= 650) {
+        reviewResult.textContent = `${selectedApplicant}'s application for ${applicant.property} is Approved. Income and credit meet current review criteria.`;
+        reviewResult.style.color = "var(--green)";
+      } else if (applicant.income >= 45000 && applicant.credit >= 600) {
+        reviewResult.textContent = `${selectedApplicant}'s application for ${applicant.property} is Pending additional review. Income or credit is close to approval criteria.`;
+        reviewResult.style.color = "var(--yellow)";
       } else {
-        result.textContent = `${name}'s application for ${property} is Denied based on current criteria.`;
+        reviewResult.textContent = `${selectedApplicant}'s application for ${applicant.property} is Denied based on current income and credit criteria.`;
+        reviewResult.style.color = "var(--red)";
       }
     }
   </script>
