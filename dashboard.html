@@ -55,32 +55,27 @@
       padding: 35px 8%;
     }
 
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-bottom: 35px;
-    }
+ <section class="metrics">
+  <div class="metric-card filter-card" data-filter="all">
+    <h3>Total Applications</h3>
+    <p>24</p>
+  </div>
 
-    .metric-card {
-      background: var(--white);
-      padding: 22px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
-    }
+  <div class="metric-card filter-card" data-filter="approved">
+    <h3>Approved</h3>
+    <p>14</p>
+  </div>
 
-    .metric-card h3 {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 8px;
-    }
+  <div class="metric-card filter-card" data-filter="pending">
+    <h3>Pending Review</h3>
+    <p>7</p>
+  </div>
 
-    .metric-card p {
-      font-size: 2rem;
-      font-weight: bold;
-      color: var(--dark-pink);
-    }
+  <div class="metric-card filter-card" data-filter="denied">
+    <h3>Denied</h3>
+    <p>3</p>
+  </div>
+</section>
 
     .section {
       background: var(--white);
