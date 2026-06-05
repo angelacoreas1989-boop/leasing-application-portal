@@ -5,11 +5,36 @@
 <h1 align="center">✦ Leasing Application Portal ✦</h1>
 
 <p align="center">
-<b>Software Engineering Portfolio Project • Workflow Simulation • Frontend Development</b>
+  <b>Software Engineering Portfolio Project • Simulating Real-World Leasing Operations</b>
 </p>
 
 <p align="center">
-Transforming real-world leasing operations into a functional web application.
+Transforming real-world leasing workflows into an interactive front-end web application.
+</p>
+
+<br/>
+
+<p align="center">
+<img src="https://img.shields.io/badge/WGU-Software_Engineering-e75480?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Focus-Workflow_Simulation-ff69b4?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Goal-SWE_Internship-ffb6c1?style=for-the-badge"/>
+</p>
+
+<br/>
+
+<p align="center">
+  <a href="https://github.com/angelacoreas1989-boop">
+    <img src="https://img.shields.io/badge/GitHub-Profile-5a5a5a?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="https://angelacoreas1989-boop.github.io/tech-portfolio/">
+    <img src="https://img.shields.io/badge/Projects-Portfolio-000000?style=for-the-badge" />
+  </a>
+  <a href="https://www.linkedin.com/in/angela-coreas-550088186">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-5a5a5a?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="https://angelacoreas1989-boop.github.io/tech-portfolio/">
+    <img src="https://img.shields.io/badge/Profile-Angela_Coreas-ff69b4?style=for-the-badge" />
+  </a>
 </p>
 
 ---
@@ -74,11 +99,15 @@ This project simulates a simplified version of that workflow by providing a stru
   <img src="https://skillicons.dev/icons?i=html,css,javascript,git,github,vscode" />
 </p>
 
+<p align="center">
+HTML • CSS • JavaScript • Git • GitHub • VS Code
+</p>
+
 ---
 
 ## ✦ SKILLS DEMONSTRATED ✦
 
-✦ Front-End Development
+✦ Front-End Development Foundations
 
 ✦ DOM Manipulation
 
@@ -168,7 +197,6 @@ leasing-application-portal/
 ├── dashboard.html
 └── README.md
 ```
-
 ---
 
 ## ✦ AUTHOR ✦
@@ -189,5 +217,13 @@ https://angelacoreas1989-boop.github.io/tech-portfolio/
 ---
 
 <p align="center">
-<i>✦ Building solutions • Writing code • Creating impact ✦</i>
+  ✦ Building Solutions • Writing Code • Creating Impact ✦
+</p>
+
+<p align="center">
+  <i>💗 Building consistently. Learning intentionally. Creating real-world solutions. 💗</i>
+</p>
+
+<p align="center">
+  ✦
 </p>
